@@ -1,0 +1,41 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: ./docker/jupyter/Dockerfile
+    container_name: jupyter_notebook
+    volumes:
+      - vol-jupyter:/home/
+    ports:
+      - 8888:8888
+    command: "start-notebook.sh --NotebookApp.token="
+  db:
+    container_name: postgres
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'ny_taxi'
+    ports:
+      - '5433:5432'
+    volumes:
+      - vol-pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin"
+    ports:
+      - "8080:80"
+    volumes:
+      - vol-pgadmin_data:/var/lib/pgadmin  
+
+volumes:
+  vol-jupyter:
+    name: vol-jupyter
+  vol-pgdata:
+    name: vol-pgdata
+  vol-pgadmin_data:
+    name: vol-pgadmin_data
