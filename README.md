@@ -2,12 +2,17 @@
 Akshay Jain's homework for DE zoomcamp for 2025
 
 ## Homework 1
-### Start up
+### Notes
+How to get IP address of the postgres container to connect in pgadmin
+```bash
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres
+```
+#### Start up
 ```bash
 docker compose build
 docker compose up -d # Starts containers in detached mode
 ```
-### Tear down / shutdown
+#### Tear down / shutdown
 ```bash
 docker compose down
 ```

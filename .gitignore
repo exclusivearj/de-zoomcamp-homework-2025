@@ -1,2 +1,3 @@
 *.gz
 *checkpoint.ipynb
+.venv
