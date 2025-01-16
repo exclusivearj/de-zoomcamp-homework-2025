@@ -1,3 +1,5 @@
 *.gz
 *checkpoint.ipynb
 .venv
+venv
+core
