@@ -17,3 +17,6 @@ docker compose up -d # Starts containers in detached mode
 docker compose down
 ```
 - When you start the jupyter_notebook, you'd need to view the container's logs to fetch the token for login.
+
+# Contact
+Feel free to reach out to Akshay Jain on LinkedIn at https://www.linkedin.com/in/akshayrjain/
