@@ -22,5 +22,8 @@ docker compose down
 jupyter nbconvert --to script notebook.ipynb
 ```
 
+# Answers
+The answers are in the [./hw1/answers folder](./hw1/answers)
+
 # Contact
 Feel free to reach out to Akshay Jain on LinkedIn at https://www.linkedin.com/in/akshayrjain/
