@@ -17,6 +17,13 @@ docker compose up -d # Starts containers in detached mode
 docker compose down
 ```
 - When you start the jupyter_notebook, you'd need to view the container's logs to fetch the token for login.
+- Convert notebook to python script:
+```bash
+jupyter nbconvert --to script notebook.ipynb
+```
+
+# Answers
+The answers are in the [./hw1/answers folder](./hw1/answers)
 
 # Contact
 Feel free to reach out to Akshay Jain on LinkedIn at https://www.linkedin.com/in/akshayrjain/
