@@ -2,6 +2,8 @@
 Akshay Jain's homework for DE zoomcamp for 2025
 
 ## Homework 1
+See questions at: https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2025/01-docker-terraform/homework.md
+
 ### Notes
 How to get IP address of the postgres container to connect in pgadmin
 ```bash
