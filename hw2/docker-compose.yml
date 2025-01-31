@@ -3,6 +3,8 @@ volumes:
     driver: local
   kestra-data:
     driver: local
+  hw2-data:
+    driver: local
 
 services:
   postgres:
@@ -21,23 +23,47 @@ services:
 
   kestra:
     image: kestra/kestra:latest
-    pull_policy: always
+    pull_policy: missing
     # Note that this setup with a root user is intended for development purpose.
     # Our base image runs without root, but the Docker Compose implementation needs root to access the Docker socket
     # To run Kestra in a rootless mode in production, see: https://kestra.io/docs/installation/podman-compose
     user: "root"
-    # command: server standalone
-    command: server standalone --worker-thread=8 --config /etc/config/application.yaml
+    command: server standalone --worker-thread=8 --config /etc/config/kestra-config.yaml
     volumes:
       - kestra-data:/app/storage
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/kestra-wd:/tmp/kestra-wd
       - ${PWD}/kestra-config.yaml:/etc/config/kestra-config.yaml
     environment:
-      KESTRA_CONFIGURATION: |
+      OWNER: "akshay"
     ports:
       - "8080:8080"
       - "8081:8081"
     depends_on:
       postgres:
+        condition: service_started
+    
+  postgres_hw2:
+    image: postgres
+    environment:
+      POSTGRES_USER: kestra
+      POSTGRES_PASSWORD: k3str4
+      POSTGRES_DB: postgres-hw2
+    ports:
+      - "5432:5432"
+    volumes:
+      - hw2-data:/var/lib/postgresql/data
+    depends_on:
+      kestra:
+        condition: service_started
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8085:80"
+    depends_on:
+      postgres_hw2:
         condition: service_started
