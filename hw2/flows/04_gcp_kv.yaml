@@ -5,7 +5,7 @@ tasks:
   - id: gcp_creds
     type: io.kestra.plugin.core.kv.Set
     key: GCP_CREDS
-    kvType: JSON
+    kvType: JSON # TODO replace with FILE. Do NOT git commit the file
     value: |
       {
         "type": "service_account",
@@ -22,7 +22,7 @@ tasks:
     type: io.kestra.plugin.core.kv.Set
     key: GCP_LOCATION
     kvType: STRING
-    value: europe-west2
+    value: us-east5
 
   - id: gcp_bucket_name
     type: io.kestra.plugin.core.kv.Set

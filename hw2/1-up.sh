@@ -1,5 +1,1 @@
-#!/usr/bin/env bash
-
-docker compose up -d
-
-# END
+../1-up.sh

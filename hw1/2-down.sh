@@ -1,5 +1,1 @@
-#!/usr/bin/env bash
-
-docker compose down
-
-# END
+../2-down.sh
