@@ -1,5 +1,5 @@
 id: 04_gcp_kv
-namespace: hw2
+namespace: zoomcamp
 
 tasks:
   - id: gcp_creds
@@ -34,4 +34,4 @@ tasks:
     type: io.kestra.plugin.core.kv.Set
     key: GCP_DATASET
     kvType: STRING
-    value: hw2
+    value: zoomcamp

@@ -3,7 +3,7 @@ volumes:
     driver: local
   kestra-data:
     driver: local
-  hw2-data:
+  zoomcamp-data:
     driver: local
 
 services:
@@ -43,16 +43,16 @@ services:
       postgres:
         condition: service_started
     
-  postgres_hw2:
+  postgres_zoomcamp:
     image: postgres
     environment:
       POSTGRES_USER: kestra
       POSTGRES_PASSWORD: k3str4
-      POSTGRES_DB: postgres-hw2
+      POSTGRES_DB: postgres-zoomcamp
     ports:
       - "5432:5432"
     volumes:
-      - hw2-data:/var/lib/postgresql/data
+      - zoomcamp-data:/var/lib/postgresql/data
     depends_on:
       kestra:
         condition: service_started
@@ -65,5 +65,5 @@ services:
     ports:
       - "8085:80"
     depends_on:
-      postgres_hw2:
+      postgres_zoomcamp:
         condition: service_started

@@ -1,5 +1,5 @@
 id: 07_gcp_dbt
-namespace: hw2
+namespace: zoomcamp
 inputs:
   - id: dbt_command
     type: SELECT
@@ -12,7 +12,7 @@ inputs:
 tasks:
   - id: sync
     type: io.kestra.plugin.git.SyncNamespaceFiles
-    url: https://github.com/DataTalksClub/data-engineering-hw2
+    url: https://github.com/DataTalksClub/data-engineering-zoomcamp
     branch: main
     namespace: "{{flow.namespace}}"
     gitDirectory: 04-analytics-engineering/taxi_rides_ny
@@ -53,10 +53,10 @@ tasks:
             fixed_retries: 1
         target: dev
 description: |
-  Note that you need to adjust the models/staging/schema.yml file to match your database and schema. Select and edit that Namespace File from the UI. Save and run this flow. Once https://github.com/DataTalksClub/data-engineering-hw2/pull/565/files is merged, you can ignore this note as it will be dynamically adjusted based on env variables.
+  Note that you need to adjust the models/staging/schema.yml file to match your database and schema. Select and edit that Namespace File from the UI. Save and run this flow. Once https://github.com/DataTalksClub/data-engineering-zoomcamp/pull/565/files is merged, you can ignore this note as it will be dynamically adjusted based on env variables.
   ```yaml
   sources:
     - name: staging
       database: kestra-sandbox 
-      schema: hw2
+      schema: zoomcamp
   ```

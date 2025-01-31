@@ -22,11 +22,11 @@ curl -X POST http://localhost:8080/api/v1/flows/import -F fileUpload=@flows/07_g
 
 #### How to get IP address of the postgres container to connect in pgadmin
 ```bash
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' hw2-postgres-1
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' zoomcamp-postgres-1
 ```
 
 #### Answers
-The answers are in the [./hw2/answers folder](./hw1/answers)
+The answers are in the [./zoomcamp/answers folder](./hw1/answers)
 
 # Contact
 Feel free to reach out to Akshay Jain on LinkedIn at https://www.linkedin.com/in/akshayrjain/
