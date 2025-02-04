@@ -14,7 +14,7 @@ tasks:
     type: io.kestra.plugin.git.SyncNamespaceFiles
     url: https://github.com/DataTalksClub/data-engineering-zoomcamp
     branch: main
-    namespace: "{{flow.namespace}}"
+    namespace: '{{flow.namespace}}'
     gitDirectory: 04-analytics-engineering/taxi_rides_ny
     dryRun: false
     # disabled: true # this Git Sync is needed only when running it the first time, afterwards the task can be disabled
@@ -23,7 +23,7 @@ tasks:
     type: io.kestra.plugin.dbt.cli.DbtCLI
     env:
       DBT_DATABASE: "{{kv('GCP_PROJECT_ID')}}"
-      DBT_SCHEMA: "{{kv('GCP_DATASET')}}"
+      DBT_SCHEMA: "{{kv('BQ_DATASET')}}"
     namespaceFiles:
       enabled: true
     containerImage: ghcr.io/kestra-io/dbt-bigquery:latest
@@ -33,16 +33,16 @@ tasks:
       sa.json: "{{kv('GCP_CREDS')}}"
     commands:
       - dbt deps
-      - "{{ inputs.dbt_command }}"
+      - '{{ inputs.dbt_command }}'
     storeManifest:
       key: manifest.json
-      namespace: "{{ flow.namespace }}"
+      namespace: '{{ flow.namespace }}'
     profiles: |
       default:
         outputs:
           dev:
             type: bigquery
-            dataset: "{{kv('GCP_DATASET')}}"
+            dataset: "{{kv('BQ_DATASET')}}"
             project: "{{kv('GCP_PROJECT_ID')}}"
             location: "{{kv('GCP_LOCATION')}}"
             keyfile: sa.json
