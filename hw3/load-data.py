@@ -77,12 +77,32 @@ def upload_to_gcs(file_path, max_retries=3) -> None:
     
     print(f"Giving up on {file_path} after {max_retries} attempts.")
 
+# Function to clean up downloaded files
+def cleanup_files(file_paths) -> None:
+    '''
+    Deletes the downloaded files
+    file_paths: list, list of file paths to delete
+    Returns: None
+    '''
+    for file_path in file_paths:
+        try:
+            os.remove(file_path)
+            print(f"Deleted: {file_path}")
+        except Exception as e:
+            print(f"Failed to delete {file_path}: {e}")
 
 if __name__ == "__main__":
+    # Download files
     with ThreadPoolExecutor(max_workers=4) as executor:
         file_paths = list(executor.map(download_file, MONTHS))
 
+    # Upload files to GCS
     with ThreadPoolExecutor(max_workers=4) as executor:
-        executor.map(upload_to_gcs, filter(None, file_paths))  # Remove None values
+        executor.map(upload_to_gcs, filter(None, file_paths))
+    
+    # Clean up downloaded files
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        executor.map(cleanup_files, filter(None, file_paths))
+    
 
     print("All files processed and verified.")

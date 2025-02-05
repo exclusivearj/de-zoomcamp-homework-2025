@@ -8,3 +8,5 @@ Where is the data stored in the External Table you created?
     GCP Bucket
     Big Table
 */
+
+GCP Bucket

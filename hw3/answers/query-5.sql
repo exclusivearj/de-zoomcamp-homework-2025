@@ -8,3 +8,5 @@ What is the best strategy to make an optimized table in Big Query if your query 
     Cluster on tpep_dropoff_timedate Partition by VendorID
     Partition by tpep_dropoff_timedate and Partition by VendorID
 */
+
+1 - Partition by tpep_dropoff_timedate and Cluster on VendorID

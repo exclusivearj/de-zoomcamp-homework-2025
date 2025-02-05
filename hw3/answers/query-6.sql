@@ -12,3 +12,13 @@ Choose the answer which most closely matches.
     5.87 MB for non-partitioned table and 0 MB for the partitioned table
     310.31 MB for non-partitioned table and 285.64 MB for the partitioned table
 */
+
+SELECT
+  COUNT(DISTINCT VendorID) distinct_vendor_ids
+FROM
+  `second-academy-449820-u6.de_zoomcamp_hw3.yellow_trip_taxi_records_regular_unpartitioned`
+WHERE
+  tpep_dropoff_datetime BETWEEN '2024-03-01'
+  AND '2024-03-15'
+
+-- 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table
