@@ -8,3 +8,6 @@
 ```bash
 jupyter nbconvert --to script notebook.ipynb
 ```
+
+## Answers
+- The answers are located at [answers folder](./answers/)
