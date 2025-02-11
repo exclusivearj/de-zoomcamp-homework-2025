@@ -4,3 +4,4 @@
 venv
 core
 *.json
+*.duckdb
