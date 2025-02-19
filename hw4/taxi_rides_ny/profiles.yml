@@ -1,4 +1,4 @@
-dbt-postgres:
+taxi_rides_ny:
   target: dev
   outputs:
     dev:
