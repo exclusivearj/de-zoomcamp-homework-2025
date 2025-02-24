@@ -10,15 +10,15 @@ python3 -m venv .venv
 
 - Install `dbt` with `postgres` plugin:
 ```python
-python -m pip install dbt-core dbt-postgres
+python -m pip install dbt-core dbt-bigquery
 ```
 
 - Setup dbt profile
 Create [profiles.yml](./homework/profiles.yml) with connection details
 
-- Run `dbt init` with profile name = `dbt-postgres`
+- Run `dbt init` with profile name = `taxi_rides_ny_profile`
 ```bash
-dbt init dbt-postgres
+dbt init taxi_rides_ny_profile
 ```
 
 - Start the containers: [1-up.sh](/1-up.sh)

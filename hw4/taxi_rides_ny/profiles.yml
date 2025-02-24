@@ -1,13 +1,13 @@
-taxi_rides_ny:
+taxi_rides_ny_profile:
   target: dev
   outputs:
     dev:
-      type: postgres
-      host: localhost
-      user: postgres
-      password: postgres
-      port: 5433
-      dbname: ny_taxi
-      schema: public
+      type: bigquery
+      method: service-account
+      keyfile: /Users/ajain17/Documents/Developer/de-zoomcamp-homework-2025/hw4/taxi_rides_ny/gcs-key.json
+      project: second-academy-449820-u6
+      dataset: trips_data_all
       threads: 1
-      keepalives_idle: 0
+      timeout_seconds: 300
+      location: US
+      priority: interactive
