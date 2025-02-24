@@ -14,9 +14,9 @@ python3 -m venv .venv
 - Upload the [zone lookup file](./taxi_rides_ny/taxi_zone_lookup.csv) to GCS and create a native table for it
 
 ## `dbt` setup
-- Install `dbt` with `postgres` plugin:
+- Install all dependencies
 ```python
-python -m pip install dbt-core dbt-bigquery
+pip install -r requirements.txt
 ```
 
 - Setup dbt profile
