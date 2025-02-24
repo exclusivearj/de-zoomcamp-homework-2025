@@ -8,6 +8,12 @@ Description here --> https://github.com/DataTalksClub/data-engineering-zoomcamp/
 python3 -m venv .venv
 ```
 
+## IMP for data setup
+- Use [this script](./taxi_rides_ny/analyses/web_to_gcs.py) to load data from Github to GCS
+- Create external GBQ table
+- Upload the [zone lookup file](./taxi_rides_ny/taxi_zone_lookup.csv) to GCS and create a native table for it
+
+## `dbt` setup
 - Install `dbt` with `postgres` plugin:
 ```python
 python -m pip install dbt-core dbt-bigquery
@@ -21,14 +27,10 @@ Create [profiles.yml](./homework/profiles.yml) with connection details
 dbt init taxi_rides_ny_profile
 ```
 
-- Start the containers: [1-up.sh](/1-up.sh)
-
-- Test the connection: `dbt debug`
-    - `dbt` should be able to connect to both `git` and local `postgres`
-
-# IMP for data setup
-- Use [this script](./taxi_rides_ny/analyses/web_to_gcs.py) to load data from Github to GCS
-- Create external GBQ table
+- Compile the code
+```bash
+dbt clean; dbt deps; dbt compile; dbt run; dbt test
+```
 
 # Answers
 All answers are located in the [answers folder](./answers/)
