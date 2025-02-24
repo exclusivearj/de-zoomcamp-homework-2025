@@ -26,6 +26,10 @@ dbt init dbt-postgres
 - Test the connection: `dbt debug`
     - `dbt` should be able to connect to both `git` and local `postgres`
 
+# IMP for data setup
+- Use [this script](./taxi_rides_ny/analyses/web_to_gcs.py) to load data from Github to GCS
+- Create external GBQ table
+
 # Answers
 All answers are located in the [answers folder](./answers/)
 
