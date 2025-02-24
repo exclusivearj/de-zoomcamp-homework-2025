@@ -98,8 +98,7 @@ def upload_to_gcs(bucket, object_name, local_file):
     print(f"File uploaded to: gs://{bucket.name}/{blob.name}")
     
 def web_to_gcs(year, service):
-    # for i in range(12):
-    for i in range(1):
+    for i in range(12):
         
         # sets the month part of the file_name string
         month = '0'+str(i+1)
