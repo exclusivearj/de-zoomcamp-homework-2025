@@ -37,7 +37,17 @@ dbt clean; dbt deps; dbt compile; dbt run
 ```bash
 dbt test
 ```
-    - All tests should run successfully
+All tests should run successfully
+
+- To build a specific dbt model:
+```bash
+dbt build --select <model-name>
+```
+    For ex:
+    ```bash
+    dbt build --select fact_trips
+    ```
+
 
 # Answers
 All answers are located in the [answers folder](./answers/)

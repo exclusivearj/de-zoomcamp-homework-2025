@@ -7,7 +7,7 @@ taxi_rides_ny_profile:
       keyfile: /Users/ajain17/Documents/Developer/de-zoomcamp-homework-2025/hw4/taxi_rides_ny/gcs-key.json
       project: second-academy-449820-u6
       dataset: trips_data_all
-      threads: 1
+      threads: 3
       timeout_seconds: 300
       location: US
       priority: interactive

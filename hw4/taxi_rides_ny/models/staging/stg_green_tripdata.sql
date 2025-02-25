@@ -10,6 +10,7 @@ with tripdata as
     row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
   from {{ source('staging','green_tripdata') }}
   where vendorid is not null 
+  and EXTRACT(YEAR FROM lpep_pickup_datetime) BETWEEN 2019 AND 2020
 )
 select
     -- identifiers
@@ -45,7 +46,7 @@ where rn = 1
 
 
 -- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
-{% if var('is_test_run', default=true) %}
+{% if var('is_test_run', default=false) %}
 
   limit 100
 
