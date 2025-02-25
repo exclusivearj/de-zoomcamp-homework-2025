@@ -9,8 +9,6 @@ with tripdata as
   select *,
     row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
   from {{ source('staging','green_tripdata') }}
-  where vendorid is not null 
-  and EXTRACT(YEAR FROM lpep_pickup_datetime) BETWEEN 2019 AND 2020
 )
 select
     -- identifiers
