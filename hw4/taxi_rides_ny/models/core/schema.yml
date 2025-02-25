@@ -143,3 +143,18 @@ models:
         tests:
           - not_null:
               severity: error
+
+  - name: fct_taxi_trips_monthly_fare_p95
+    description: >
+      Filter out invalid entries (`fare_amount > 0`, `trip_distance > 0`, and `payment_type_description in ('Cash', 'Credit Card')`)
+      Compute the **continous percentile** of `fare_amount` partitioning by service_type, year and and month
+    columns:
+      - name: service_type
+        data_type: string
+        description: "Service type of the taxi trip"
+      - name: p97
+        data_type: numeric
+      - name: p95
+        data_type: numeric
+      - name: p90
+        data_type: numeric
