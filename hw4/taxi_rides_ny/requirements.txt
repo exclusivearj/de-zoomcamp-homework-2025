@@ -1,0 +1,6 @@
+dbt-core 
+dbt-bigquery
+pandas
+pyarrow
+google-cloud-storage
+polars

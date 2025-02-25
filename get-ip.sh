@@ -6,7 +6,7 @@ set -eou pipefail
 
 # Usage function
 if [ "$#" -lt 1 ]; then
-    echo "Usage: ./get-postgres-ip.sh <container_name>"
+    echo "Usage: $0 <container_name>"
     exit 1
 fi
 
