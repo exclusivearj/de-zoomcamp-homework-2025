@@ -17,3 +17,4 @@ For the Trips that **respectively** started from `Newark Airport`, `SoHo`, and `
 - East Village, Saint Albans, Howard Beach
 - East Village, Rosedale, Bath Beach
 - East Village, Yorkville East, Greenpoint
+

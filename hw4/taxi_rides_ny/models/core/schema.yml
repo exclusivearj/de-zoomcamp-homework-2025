@@ -143,3 +143,90 @@ models:
         tests:
           - not_null:
               severity: error
+
+  - name: fct_taxi_trips_monthly_fare_p95
+    description: >
+      Filter out invalid entries (`fare_amount > 0`, `trip_distance > 0`, and `payment_type_description in ('Cash', 'Credit Card')`)
+      Compute the **continous percentile** of `fare_amount` partitioning by service_type, year and and month
+    columns:
+      - name: service_type
+        data_type: string
+        description: "Service type of the taxi trip"
+      - name: p97
+        data_type: numeric
+      - name: p95
+        data_type: numeric
+      - name: p90
+        data_type: numeric
+
+  - name: dim_fhv_trips
+    description: >
+      Trips corresponding to For-Hire Vehicles (FHV) service.
+      The table contains records where both pickup and dropoff locations are valid and known zones. 
+      Each record corresponds to a trip uniquely identified by tripid.
+    columns:
+      - name: service_type
+        data_type: string
+        description: "Service type of the taxi trip, fixed as 'FHV'."
+      - name: pickup_year
+        data_type: int64
+        description: "Year of the pickup datetime."
+      - name: pickup_month
+        data_type: int64
+        description: "Month of the pickup datetime."
+      - name: dispatching_base_num
+        data_type: string
+        description: "Dispatching base number of the FHV."
+      - name: pickup_datetime
+        data_type: timestamp
+        description: "Datetime when the trip started."
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: "Datetime when the trip ended."
+      - name: pickup_locationid
+        data_type: int64
+        description: "Location ID where the trip started."
+      - name: dropoff_locationid
+        data_type: int64
+        description: "Location ID where the trip ended."
+      - name: pickup_zone
+        data_type: string
+        description: "Zone where the trip started."
+      - name: dropoff_zone
+        data_type: string
+        description: "Zone where the trip ended."
+      - name: sr_flag
+        data_type: string
+        description: "Shared ride flag."
+      - name: affiliated_base_number
+        data_type: string
+        description: "Affiliated base number of the FHV."
+
+  - name: fct_fhv_monthly_zone_traveltime_p90
+    description: >
+      Compute the **continous percentile** of `trip_distance` partitioning by `pickup_zone`, `year` and `month`
+    columns:
+      - name: pickup_year
+        data_type: int64
+        description: "Year of the pickup datetime."
+      - name: pickup_month
+        data_type: int64
+        description: "Month of the pickup datetime."
+      - name: pickup_locationid
+        data_type: int64
+        description: "Location ID where the trip started."
+      - name: dropoff_locationid
+        data_type: int64
+        description: "Location ID where the trip ended."
+      - name: pickup_zone
+        data_type: string
+        description: "Zone where the trip started."
+      - name: dropoff_zone
+        data_type: string
+        description: "Zone where the trip ended."
+      - name: trip_duration
+        data_type: numeric
+        description: "Duration of the trip in seconds."
+      - name: p90
+        data_type: numeric
+        description: "90th percentile of the trip duration in seconds."
