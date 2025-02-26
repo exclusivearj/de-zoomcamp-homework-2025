@@ -8,10 +8,8 @@ sources:
       # loaded_at_field: record_loaded_at
     tables:
       - name: green_tripdata
-      - name:
-          yellow_tripdata
-          # freshness:
-          # error_after: {count: 6, period: hour}
+      - name: yellow_tripdata
+      - name: fhv_tripdata
 
 models:
   - name: stg_green_tripdata
@@ -196,3 +194,37 @@ models:
         description: Total amount of all tolls paid in trip.
       - name: Total_amount
         description: The total amount charged to passengers. Does not include cash tips.
+
+  - name: stg_fhv_tripdata
+    description: >
+      FHV trips filtered where dispatching_base_num IS NOT NULL
+    columns:
+      - name: dispatching_base_num
+        description: >
+          The TLC base license number of the base that dispatched the trip.
+      - name: pickup_datetime
+        description: The date and time when the meter was engaged.
+      - name: dropOff_datetime
+        description: The date and time when the meter was disengaged.
+      - name: PUlocationID
+        description: Pickup location id
+        tests:
+          - relationships:
+              to: ref('taxi_zone_lookup')
+              field: locationid
+              severity: warn
+      - name: DOlocationID
+        description: Drop off location id
+        tests:
+          - relationships:
+              to: ref('taxi_zone_lookup')
+              field: locationid
+              severity: warn
+      - name: SR_Flag
+        description: >
+          A code indicating the TPEP provider that provided the record.
+          1= Creative Mobile Technologies, LLC; 
+          2= VeriFone Inc.
+      - name: Affiliated_base_number
+        description: >
+          The TLC base license number of the base that dispatched the trip.
