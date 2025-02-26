@@ -17,9 +17,7 @@ select
     ft.dropOff_datetime as dropoff_datetime,
     ft.PUlocationID as pickup_locationid,
     ft.DOlocationID as dropoff_locationid,
-    pickup_zone.borough as pickup_borough,
     pickup_zone.zone as pickup_zone,
-    dropoff_zone.borough as dropoff_borough,
     dropoff_zone.zone as dropoff_zone,
     ft.SR_Flag as sr_flag,
     ft.Affiliated_base_number as affiliated_base_number

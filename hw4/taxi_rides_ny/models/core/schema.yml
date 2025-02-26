@@ -189,15 +189,9 @@ models:
       - name: dropoff_locationid
         data_type: int64
         description: "Location ID where the trip ended."
-      - name: pickup_borough
-        data_type: string
-        description: "Borough where the trip started."
       - name: pickup_zone
         data_type: string
         description: "Zone where the trip started."
-      - name: dropoff_borough
-        data_type: string
-        description: "Borough where the trip ended."
       - name: dropoff_zone
         data_type: string
         description: "Zone where the trip ended."
@@ -211,3 +205,28 @@ models:
   - name: fct_fhv_monthly_zone_traveltime_p90
     description: >
       Compute the **continous percentile** of `trip_distance` partitioning by `pickup_zone`, `year` and `month`
+    columns:
+      - name: pickup_year
+        data_type: int64
+        description: "Year of the pickup datetime."
+      - name: pickup_month
+        data_type: int64
+        description: "Month of the pickup datetime."
+      - name: pickup_locationid
+        data_type: int64
+        description: "Location ID where the trip started."
+      - name: dropoff_locationid
+        data_type: int64
+        description: "Location ID where the trip ended."
+      - name: pickup_zone
+        data_type: string
+        description: "Zone where the trip started."
+      - name: dropoff_zone
+        data_type: string
+        description: "Zone where the trip ended."
+      - name: trip_duration
+        data_type: numeric
+        description: "Duration of the trip in seconds."
+      - name: p90
+        data_type: numeric
+        description: "90th percentile of the trip duration in seconds."
